@@ -1,0 +1,20 @@
+{
+  "name": "random_things",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Spad",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.1.1",
+    "node-telegram-bot-api": "^0.50.0",
+    "pg": "^8.4.1",
+    "require-promise": "^1.0.1",
+    "telegraf": "^3.38.0"
+  }
+}
