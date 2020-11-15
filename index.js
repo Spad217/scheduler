@@ -2,9 +2,8 @@
 // const http = require('http');
 const hbs = require("hbs");
 const express = require("express");
-const rp = require("require-promise");
+const rp = require("request-promise");
 
-// /const bot = new tg(process.env.API_KEY, {polling: true});
 const app = express();
 
 let db = {bots: {}};
@@ -110,11 +109,13 @@ app.use("/api/eval/?", function(req, res){
 	return res.send('need key');
 });
 
-app.use("/tg_bot/:token/?", function(req, res){
+app.use("/tg_bot/:token?", function(req, res){
+
 	if(!db.bots[req.params.token]){
 	}
-	rp(`https://api.telegram.org/bot1342396766:AAFGcxzXcJ2EfNywadIQA-FK7zaFnTYS8RY/sendMessage?chat_id=392041691&text=${req.params.token}`);
-	rp(`https://api.telegram.org/bot${req.params.token}/sendMessage?chat_id=392041691&text=124qwe`);
+	console.log(req.params.token);
+	rp(`https://api.telegram.org/bot${req.params.token}/sendMessage?chat_id=392041691&text=${JSON.stringify(req.query)}`);
+	return res.send('ok');
 });
 
 app.use("/", function(request, response){
@@ -122,4 +123,5 @@ app.use("/", function(request, response){
 	response.send(hbs.compile("<h1>Страница не найдена</h1></br>{{getTime}}")({}));
 });
 console.log(process.env.PORT||80);
+
 app.listen(process.env.PORT||80);
