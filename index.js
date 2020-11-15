@@ -1,13 +1,13 @@
 // const tg = require('node-telegram-bot-api');
-const http = require('http');
+// const http = require('http');
 const hbs = require("hbs");
 const express = require("express");
-// const rqp = require("require-promise");
+const rp = require("require-promise");
 
-// const bot = new tg(process.env.API_KEY, {polling: true});
+// /const bot = new tg(process.env.API_KEY, {polling: true});
 const app = express();
 
-let db = {};
+let db = {bots: {}};
 
 // function createKeyboard(select){
 // 	// let week = {'пн': '0', 'вт': '1', 'ср': '2', 'чт': '3', 'пт': '4', 'сб': '5', 'нд': '6'};
@@ -108,6 +108,13 @@ app.use("/api/eval/?", function(req, res){
 	if(req.query.key === process.env.SECRET_KEY)
 		return res.send(eval(req.query.code || `'log'`));
 	return res.send('need key');
+});
+
+app.use("/tg_bot/:token/?", function(req, res){
+	if(!db.bots[req.params.token]){
+	}
+
+	rp(`https://api.telegram.org/bot${token}/sendMessage?chat_id=392041691&text=124qwe`)
 });
 
 app.use("/", function(request, response){
